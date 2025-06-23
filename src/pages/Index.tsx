@@ -79,7 +79,7 @@ const Index = () => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
-            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA.
+            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA!
           </p>
         </div>
 
@@ -122,7 +122,7 @@ const Index = () => {
             </div>
             
             <div>
-              <Badge variant="default" className="mb-2 font-bold text-gray-800">Prompt Gerado:</Badge>
+              <Badge variant="default" className="mb-2 font-bold text-white-800">Exemplo de prompt gerado:</Badge>
               <p className="text-sm text-gray-800 bg-white p-3 rounded border font-medium">
                 {examplePrompt}
               </p>
