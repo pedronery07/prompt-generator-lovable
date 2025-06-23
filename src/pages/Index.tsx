@@ -100,37 +100,12 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Tips Card */}
-        <Card className="mb-8 border-red-200 bg-red-50/50">
-          <CardHeader>
-            <CardTitle className="text-red-800 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
-              IMPORTANTE
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-red-700 space-y-4">
-            <p>
-              Seja criativo e forneça informações relevantes como público-alvo, tom desejado, elementos visuais esperados, etc.
-            </p>
-            
-            <div className="space-y-2">
-              <h4 className="font-semibold">Dicas:</h4>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Especifique o tipo de produto</li>
-                <li>Mencione o público-alvo</li>
-                <li>Dê sugestões de ambiente ou emoção</li>
-                <li>Seja claro sobre o estilo visual desejado</li>
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Product Advertisements Gallery */}
         <Card className="mb-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
           <CardHeader>
             <CardTitle className="text-purple-800 flex items-center gap-2">
               <Image className="h-5 w-5" />
-              Anúncios que o Prompt Generator te ajudar a gerar
+              Anúncios que o Prompt Generator te ajuda a gerar
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -155,6 +130,31 @@ const Index = () => {
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
+          </CardContent>
+        </Card>
+
+        {/* Tips Card */}
+        <Card className="mb-8 border-red-200 bg-red-50/50">
+          <CardHeader>
+            <CardTitle className="text-red-800 flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              IMPORTANTE
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-red-700 space-y-4">
+            <p>
+              Seja criativo e forneça informações relevantes como público-alvo, tom desejado, elementos visuais esperados, etc.
+            </p>
+            
+            <div className="space-y-2">
+              <h4 className="font-semibold">Dicas:</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Especifique o tipo de produto</li>
+                <li>Mencione o público-alvo</li>
+                <li>Dê sugestões de ambiente ou emoção</li>
+                <li>Seja claro sobre o estilo visual desejado</li>
+              </ul>
+            </div>
           </CardContent>
         </Card>
 
