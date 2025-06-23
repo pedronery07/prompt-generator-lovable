@@ -1,11 +1,12 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Lightbulb, Sparkles, Copy, CheckCircle, AlertTriangle } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Lightbulb, Sparkles, Copy, CheckCircle, AlertTriangle, ChevronDown, Image } from "lucide-react";
 import { toast } from "sonner";
 
 const Index = () => {
@@ -20,6 +21,25 @@ const Index = () => {
   const exampleBriefing = "Um tênis esportivo voltado para jovens urbanos entre 18 e 25 anos. O anúncio deve transmitir energia e movimento. Deve ter um cenário noturno urbano com iluminação de neon. Estilo visual cyberpunk, com foco nos pés do modelo correndo pela cidade.";
   
   const examplePrompt = "A pair of futuristic, neon-lit running shoes worn by a young urban runner sprinting through a cyberpunk city at night. The scene is illuminated by glowing neon signs, wet asphalt reflecting vibrant lights, and dynamic motion blur emphasizing speed. Focus on the shoes, with detailed textures, sleek design, and a background filled with towering buildings and electric colors.";
+
+  const additionalExamples = [
+    {
+      briefing: "Uma campanha para um smartphone premium direcionada a profissionais criativos entre 25 e 40 anos. O foco deve ser na qualidade da câmera e na elegância do design. Ambiente minimalista e sofisticado, com iluminação suave e tons neutros.",
+      prompt: "A sleek, premium smartphone held by elegant hands in a minimalist studio setting. Soft, professional lighting highlights the device's metallic finish and camera lens. Clean white background with subtle shadows, emphasizing sophistication and creative potential through refined composition."
+    },
+    {
+      briefing: "Campanha para um carro elétrico familiar, público-alvo famílias modernas de classe média. Deve transmitir sustentabilidade, segurança e praticidade. Cenário natural com família feliz, paisagem verde ao fundo.",
+      prompt: "A modern electric family car parked in a lush green landscape with a happy family of four nearby. Clean energy concept with solar panels visible in the background, bright natural lighting, eco-friendly atmosphere, emphasis on sustainability and family values."
+    }
+  ];
+
+  const galleryImages = [
+    { src: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop", alt: "AI Generated Advertisement" },
+    { src: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop", alt: "Creative Campaign Visual" },
+    { src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop", alt: "Tech Product Shot" },
+    { src: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop", alt: "Modern Design Concept" },
+    { src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop", alt: "Professional Advertisement" }
+  ];
 
   const generatePrompt = async () => {
     if (!briefing.trim()) {
@@ -78,9 +98,6 @@ const Index = () => {
               Prompt Generator
             </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
-            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA!
-          </p>
         </div>
 
         {/* Tips Card */}
@@ -108,10 +125,80 @@ const Index = () => {
           </CardContent>
         </Card>
 
+        {/* AI Generated Images Gallery */}
+        <Card className="mb-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+          <CardHeader>
+            <CardTitle className="text-purple-800 flex items-center gap-2">
+              <Image className="h-5 w-5" />
+              Exemplos de Imagens Geradas por IA
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Carousel className="w-full max-w-3xl mx-auto">
+              <CarouselContent>
+                {galleryImages.map((image, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card className="border-0 shadow-md">
+                        <CardContent className="p-0">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-48 object-cover rounded-lg"
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </CardContent>
+        </Card>
+
+        {/* Instruction Message */}
+        <div className="text-center mb-8">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
+            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA!
+          </p>
+        </div>
+
         {/* Example Section */}
         <Card className="mb-8 bg-gray-50/50 border-gray-200">
           <CardHeader>
-            <CardTitle className="text-gray-800 font-bold">Exemplo de Uso</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-gray-800 font-bold">Exemplo de Uso</CardTitle>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="flex items-center gap-2">
+                    Mais exemplos
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-80 max-h-96 overflow-y-auto bg-white border shadow-lg">
+                  {additionalExamples.map((example, index) => (
+                    <DropdownMenuItem key={index} className="p-4 flex-col items-start space-y-2">
+                      <div className="w-full">
+                        <Badge variant="secondary" className="mb-2 text-gray-600 italic">
+                          Briefing {index + 2}:
+                        </Badge>
+                        <p className="text-xs text-gray-600 italic mb-2">
+                          {example.briefing}
+                        </p>
+                        <Badge variant="default" className="mb-1 font-bold">
+                          Prompt gerado:
+                        </Badge>
+                        <p className="text-xs text-gray-800 font-medium">
+                          {example.prompt}
+                        </p>
+                      </div>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
