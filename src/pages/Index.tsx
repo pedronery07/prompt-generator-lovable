@@ -34,11 +34,11 @@ const Index = () => {
   ];
 
   const galleryImages = [
-    { src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop", alt: "Sneaker Advertisement" },
-    { src: "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=400&h=300&fit=crop", alt: "Smartphone Advertisement" },
-    { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop", alt: "Car Advertisement" },
-    { src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop", alt: "Fashion Advertisement" },
-    { src: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop", alt: "Tech Product Advertisement" }
+    { src: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop", alt: "Smartphone Advertisement" },
+    { src: "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400&h=300&fit=crop", alt: "Beer Advertisement" },
+    { src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=300&fit=crop", alt: "Car Advertisement" },
+    { src: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop", alt: "Sneaker Advertisement" },
+    { src: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=300&fit=crop", alt: "Watch Advertisement" }
   ];
 
   const generatePrompt = async () => {
