@@ -100,6 +100,13 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Instruction Message */}
+        <div className="text-center mb-8">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
+            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA!
+          </p>
+        </div>
+
         {/* Product Advertisements Gallery */}
         <Card className="mb-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
           <CardHeader>
@@ -138,7 +145,7 @@ const Index = () => {
           <CardHeader>
             <CardTitle className="text-red-800 flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
-              IMPORTANTE
+              IMPORTANTE: Leia antes de escrever o seu briefing
             </CardTitle>
           </CardHeader>
           <CardContent className="text-red-700 space-y-4">
@@ -157,13 +164,6 @@ const Index = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* Instruction Message */}
-        <div className="text-center mb-8">
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
-            Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA!
-          </p>
-        </div>
 
         {/* Example Section */}
         <Card className="mb-8 bg-gray-50/50 border-gray-200">
