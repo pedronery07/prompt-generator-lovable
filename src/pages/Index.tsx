@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Sparkles, Copy, CheckCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Lightbulb, Sparkles, Copy, CheckCircle, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 
 const Index = () => {
@@ -12,6 +13,9 @@ const Index = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showWarningDialog, setShowWarningDialog] = useState(false);
+
+  const MIN_BRIEFING_LENGTH = 80;
 
   const exampleBriefing = "Um tênis esportivo voltado para jovens urbanos entre 18 e 25 anos. O anúncio deve transmitir energia e movimento. Deve ter um cenário noturno urbano com iluminação de neon. Estilo visual cyberpunk, com foco nos pés do modelo correndo pela cidade.";
   
@@ -23,7 +27,18 @@ const Index = () => {
       return;
     }
 
+    // Verificar se o briefing é muito curto
+    if (briefing.trim().length < MIN_BRIEFING_LENGTH) {
+      setShowWarningDialog(true);
+      return;
+    }
+
+    performGeneration();
+  };
+
+  const performGeneration = async () => {
     setIsLoading(true);
+    setShowWarningDialog(false);
     
     // Simulando chamada da API - aqui você integraria com a OpenAI API
     setTimeout(() => {
@@ -42,6 +57,15 @@ const Index = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleEditBriefing = () => {
+    setShowWarningDialog(false);
+    // O foco permanece no textarea para edição
+  };
+
+  const handleGenerateAnyway = () => {
+    performGeneration();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -54,7 +78,7 @@ const Index = () => {
               Prompt Generator
             </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto italic">
             Descreva como você imagina o seu anúncio e nós te ajudamos na comunicação com a IA.
           </p>
         </div>
@@ -87,18 +111,18 @@ const Index = () => {
         {/* Example Section */}
         <Card className="mb-8 bg-gray-50/50 border-gray-200">
           <CardHeader>
-            <CardTitle className="text-gray-800">Exemplo de Uso</CardTitle>
+            <CardTitle className="text-gray-800 font-bold">Exemplo de Uso</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Badge variant="secondary" className="mb-2">Briefing de Exemplo:</Badge>
+              <Badge variant="secondary" className="mb-2 text-gray-600 italic">Briefing de Exemplo:</Badge>
               <p className="text-sm text-gray-600 italic bg-white p-3 rounded border">
                 {exampleBriefing}
               </p>
             </div>
             
             <div>
-              <Badge variant="default" className="mb-2">Prompt Gerado:</Badge>
+              <Badge variant="default" className="mb-2 font-bold text-gray-800">Prompt Gerado:</Badge>
               <p className="text-sm text-gray-800 bg-white p-3 rounded border font-medium">
                 {examplePrompt}
               </p>
@@ -174,6 +198,39 @@ const Index = () => {
             </CardContent>
           </Card>
         )}
+
+        {/* Warning Dialog */}
+        <Dialog open={showWarningDialog} onOpenChange={setShowWarningDialog}>
+          <DialogContent className="bg-yellow-50 border-yellow-200">
+            <DialogHeader>
+              <DialogTitle className="text-yellow-800 flex items-center gap-2 text-xl font-bold">
+                <AlertTriangle className="h-6 w-6" />
+                ATENÇÃO
+              </DialogTitle>
+            </DialogHeader>
+            <div className="py-4">
+              <p className="text-yellow-700">
+                Seu briefing está muito curto e pode não conter informações suficientes para gerar um bom prompt. 
+                Considere revisar e consultar a seção de dicas para mais ideias.
+              </p>
+            </div>
+            <DialogFooter className="flex gap-2 sm:gap-2">
+              <Button
+                onClick={handleEditBriefing}
+                variant="outline"
+                className="border-yellow-300 text-yellow-800 hover:bg-yellow-100"
+              >
+                Editar briefing
+              </Button>
+              <Button
+                onClick={handleGenerateAnyway}
+                className="bg-yellow-600 hover:bg-yellow-700 text-white"
+              >
+                Gerar mesmo assim
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
       </div>
     </div>
