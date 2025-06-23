@@ -34,11 +34,11 @@ const Index = () => {
   ];
 
   const galleryImages = [
-    { src: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop", alt: "AI Generated Advertisement" },
-    { src: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop", alt: "Creative Campaign Visual" },
-    { src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop", alt: "Tech Product Shot" },
-    { src: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop", alt: "Modern Design Concept" },
-    { src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop", alt: "Professional Advertisement" }
+    { src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop", alt: "Sneaker Advertisement" },
+    { src: "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=400&h=300&fit=crop", alt: "Smartphone Advertisement" },
+    { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop", alt: "Car Advertisement" },
+    { src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop", alt: "Fashion Advertisement" },
+    { src: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop", alt: "Tech Product Advertisement" }
   ];
 
   const generatePrompt = async () => {
@@ -125,12 +125,12 @@ const Index = () => {
           </CardContent>
         </Card>
 
-        {/* AI Generated Images Gallery */}
+        {/* Product Advertisements Gallery */}
         <Card className="mb-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
           <CardHeader>
             <CardTitle className="text-purple-800 flex items-center gap-2">
               <Image className="h-5 w-5" />
-              Exemplos de Imagens Geradas por IA
+              Anúncios que o Prompt Generator te ajudar a gerar
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -209,7 +209,7 @@ const Index = () => {
             </div>
             
             <div>
-              <Badge variant="default" className="mb-2 font-bold text-white-800">Exemplo de prompt gerado:</Badge>
+              <Badge variant="default" className="mb-2 font-bold">Prompt gerado:</Badge>
               <p className="text-sm text-gray-800 bg-white p-3 rounded border font-medium">
                 {examplePrompt}
               </p>
